@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as r,g as t,r as s}from"./app.db82f794.js";const n={},c={class:"h-screen relative overflow-hidden bg-white"};function a(e,i){return r(),t("div",c,[s(e.$slots,"default")])}const l=o(n,[["render",a]]);export{l as M};
