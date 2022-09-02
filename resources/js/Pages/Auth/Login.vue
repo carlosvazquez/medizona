@@ -41,12 +41,12 @@ const submit = () => {
             <div class="-space-y-px rounded-md shadow-sm">
                 <div>
                     <MedizonaLabel class="sr-only" for="email" value="Email" />
-                    <MedizonaInput id="email" type="email" class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" v-model="form.email" required autofocus autocomplete="username" placeholder="Email address"/>
+                    <MedizonaInput id="email" type="email" class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" v-model="form.email" required autofocus autocomplete="username" placeholder="Email address" value="test@medizona.com.mx"/>
                     <MedizonaInputError class="mt-2" :message="form.errors.email" />
                 </div>
                 <div>
                     <MedizonaLabel class="sr-only" for="password" value="Password" />
-                    <MedizonaInput id="password" type="password" class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" v-model="form.password" required autocomplete="current-password" placeholder="Password"/>
+                    <MedizonaInput id="password" type="password" class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" v-model="form.password" required autocomplete="current-password" placeholder="Password" value="password"/>
                     <MedizonaInputError class="mt-2" :message="form.errors.password" />
                 </div>
             </div>
