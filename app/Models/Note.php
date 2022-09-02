@@ -16,6 +16,13 @@ class Note extends Model
     protected $keyType = 'uuid';
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['quantity','total', 'money'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -24,6 +31,30 @@ class Note extends Model
         'customer_id',
         'date',
     ];
+
+    /**
+     * Items quantity value.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function quantity():Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->items->sum('quantity'),
+        );
+    }
+
+    /**
+     * Transforms total value.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function money():Attribute
+    {
+        return Attribute::make(
+            get: fn () => '$ '.number_format($this->total, 2),
+        );
+    }
 
     /**
      * Transforms total value.
@@ -43,5 +74,13 @@ class Note extends Model
     public function items()
     {
         return $this->hasMany(NoteItem::class);
+    }
+
+    /**
+     * Gets the customer note owner.
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

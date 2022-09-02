@@ -25,4 +25,11 @@ class Customer extends Model
         'address',
     ];
 
+    /**
+     * Gets the sales notes for the customer.
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

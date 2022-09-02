@@ -15,9 +15,9 @@
             <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                 <div class="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
                     <div class="flex w-full items-center justify-between md:w-auto">
-                    <a href="#">
+                    <a style="width:47px;" href="/">
                         <span class="sr-only">Workflow</span>
-                        <img alt="Workflow" class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" />
+                        <img alt="Workflow" style="width: 47px;" class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" />
                     </a>
                     <div class="-mr-2 flex items-center md:hidden">
                         <PopoverButton class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -28,7 +28,10 @@
                     </div>
                 </div>
                 <div class="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
-                    <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link>
+                    <template v-if="$page.props.auth.user">
+                        <Link :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link>
+                        <Link :href="route('notes.index')" class="text-sm text-gray-700 dark:text-gray-500 underline">Sales Notes</Link>
+                    </template>
                     <template v-else>
                         <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</Link>
                         <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</Link>

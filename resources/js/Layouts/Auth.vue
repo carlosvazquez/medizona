@@ -8,5 +8,5 @@
         <slot />
       </div>
     </div>
-  </template>
+</template>
   

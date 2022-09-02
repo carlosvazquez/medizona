@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Item;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
-class SalesNotesController extends Controller
+class NotesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * List all notes.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $notes = Note::with('customer','items')->orderBy('date', 'desc')->get();
+
+        return inertia('Notes/Index', ['notes' => $notes]);
     }
 
     /**
@@ -24,7 +29,10 @@ class SalesNotesController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        $items = Item::all();
+
+        return inertia('Notes/Create', ['customers' => $customers, 'items' => $items]);
     }
 
     /**
@@ -41,12 +49,14 @@ class SalesNotesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Note $note)
     {
-        //
+        $note = $note->load('customer','items');
+        
+        return inertia('Notes/Show', ['note' => $note]);
     }
 
     /**
@@ -75,11 +85,13 @@ class SalesNotesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Note $note)
     {
-        //
+        $note->delete();
+
+        return redirect()->route('notes.index')->with('message', 'Sales Note Delete Successfully');
     }
 }

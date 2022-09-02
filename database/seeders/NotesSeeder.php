@@ -19,11 +19,11 @@ class NotesSeeder extends Seeder
     {
         $allItems = Item::all();
 
-        $range = range(1,10);
+        $range = range(1,5);
 
         foreach($range as $_) {
 
-            $products = $allItems->take(random_int(1,10));
+            $products = $allItems->take(random_int(1,5));
 
             $customer = Customer::inRandomOrder()->first();
 

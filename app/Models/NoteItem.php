@@ -16,6 +16,13 @@ class NoteItem extends Model
     protected $keyType = 'uuid';
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['total', 'money'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -47,5 +54,30 @@ class NoteItem extends Model
     public function note()
     {
         return $this->belongsTo(Note::class);
+    }
+
+    /**
+     * Transforms total value.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function money():Attribute
+    {
+        return Attribute::make(
+            get: fn () => '$ '.number_format($this->price, 2),
+        );
+    }
+
+    /**
+     * Transforms price value.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function price():Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value / 100,
+            set: fn ($value) => $value * 100,
+        );
     }
 }
