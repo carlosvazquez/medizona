@@ -1,0 +1,1 @@
+import{_ as s}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as t,g as o,d as c,r}from"./app.db82f794.js";const a={},n={class:"flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8"},l={class:"w-full max-w-md space-y-8"};function d(e,i){return t(),o("div",n,[c("div",l,[r(e.$slots,"default")])])}const m=s(a,[["render",d]]);export{m as M};
